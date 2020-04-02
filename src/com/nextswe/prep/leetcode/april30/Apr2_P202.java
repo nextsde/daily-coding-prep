@@ -3,7 +3,7 @@ package com.nextswe.prep.leetcode.april30;
 import java.util.HashSet;
 import java.util.Set;
 
-public class P202 {
+public class Apr2_P202 {
     // solution 3 //accepted
     // was stuck had get some idea from discusssion without looking at the solution
     // heard about floyd cycle detection algorithm

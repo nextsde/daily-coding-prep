@@ -1,6 +1,6 @@
 package com.nextswe.prep;
 
-import com.nextswe.prep.leetcode.april30.P202;
+import com.nextswe.prep.leetcode.april30.Apr2_P202;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,7 +8,7 @@ public class Main {
 //        BasicSort.qsort(A);
 //        SKHeap.heap_sort_by_extract_min(A);
 //        Utils.printArray(A);
-        P202 p202 = new P202();
+        Apr2_P202 p202 = new Apr2_P202();
         System.out.println(p202.isHappy(1234));
     }
 }
