@@ -4,15 +4,6 @@ package com.nextswe.prep.sorts;
 import java.util.Random;
 
 public class BasicSort {
-    /* A utility function to print array of size n */
-    public static void printArray(int arr[])
-    {
-        int n = arr.length;
-        for (int i=0; i<n; ++i)
-            System.out.print(arr[i]+" ");
-        System.out.println();
-    }
-
     public static void swap(int A[], int i, int j){
         int tmp = A[i];
         A[i] = A[j];
@@ -154,9 +145,7 @@ public class BasicSort {
         int pindex = start;
         for(int i = start;i<end;i++){
             if(A[i]<=pivot){
-                int tmp = A[i];
-                A[i] = A[pindex];
-                A[pindex] = tmp;
+                swap(A,i,pindex);
                 pindex++;
             }
         }
@@ -167,11 +156,15 @@ public class BasicSort {
         return pindex;
     }
 
-    public static void qsort(int[] A, int start, int end){
+    private static void qsort(int[] A, int start, int end){
         if(start<end){
             int pindex = randomizedPartition(A,start,end);
             qsort(A,start,pindex-1);
             qsort(A,pindex+1,end);
         }
+    }
+
+    public static void qsort(int[] A){
+        qsort(A,0,A.length-1);
     }
 }
