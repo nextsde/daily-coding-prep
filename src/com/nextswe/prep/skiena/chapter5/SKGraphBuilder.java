@@ -130,17 +130,65 @@ public class SKGraphBuilder {
     boolean processed[]; //which vertices have been processed
     boolean discovered[]; //which vertices have been found
     int parent[]; //discovery relation
+    int entry_time[];
+    int exit_time[];
+    boolean finished = false;
+    int time_count = 0;
+    boolean dfs = false;
 
     public void initialize_search(SKGraph skg){
         processed = new boolean[skg.MAX_VERTEX];
         discovered = new boolean[skg.MAX_VERTEX];
         parent = new int[skg.MAX_VERTEX];
+        entry_time = new int[skg.MAX_VERTEX];
+        exit_time = new int[skg.MAX_VERTEX];
+        finished = false;
+        dfs = false;
 
         for(int i=1; i<=skg.nvertices; i++){
             discovered[i] = false;
             processed[i] = false;
             parent[i] = -1;
         }
+    }
+
+    public void dfs(SKGraph skg, int x){
+        SKEdgeNode p;
+        int y;
+        dfs = true;
+
+        if(finished){
+            return;
+        }
+
+        discovered[x] = true;
+        time_count = time_count+1;
+        entry_time[x] = time_count;
+
+        process_vertex_early(x);
+
+        p = skg.edges[x];
+        while(p!=null){
+            y = p.y;
+            if(!discovered[y]){
+                parent[y] = x;
+                process_edge(x,y);
+                dfs(skg,y);
+            }else if((!processed[y] && parent[x]!=y) || skg.directed){
+                process_edge(x,y);
+            }
+
+            if(finished){
+                return;
+            }
+            p=p.next;
+        }
+        process_vertex_late(x);
+
+        time_count = time_count+1;
+        exit_time[x] = time_count;
+
+        processed[x] = true;
     }
 
     public void bfs(SKGraph skg, int start){
@@ -220,13 +268,21 @@ public class SKGraphBuilder {
     private void process_vertex_late(int v) {
     }
 
-    private void process_edge(int v, int y) {
-        if(twoColor){
-            if(color[v] == color[y]){
-                bipartite = false;
-                System.out.println("Not bipartite "+v+","+y);
+    private void process_edge(int x, int y) {
+        if(dfs){
+            if(discovered[y] && (parent[x] != y)){
+                System.out.print("Cycle from "+y+" to "+x);
+                find_path(y,x);
+                finished = true;
             }
-            color[y] = complement(color[v]);
+        }else{
+            if(twoColor){
+                if(color[x] == color[y]){
+                    bipartite = false;
+                    System.out.println("Not bipartite "+x+","+y);
+                }
+                color[y] = complement(color[x]);
+            }
         }
     }
 
