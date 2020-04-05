@@ -9,4 +9,11 @@ public class Utils {
             System.out.print(arr[i]+" ");
         System.out.println();
     }
+
+    public static void println(int judge) {
+        System.out.println(""+judge);
+    }
+    public static void println(String judge) {
+        System.out.println(""+judge);
+    }
 }
