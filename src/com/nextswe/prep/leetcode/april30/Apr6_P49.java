@@ -2,7 +2,7 @@ package com.nextswe.prep.leetcode.april30;
 
 import java.util.*;
 
-public class Apr6_49 {
+public class Apr6_P49 {
     //solution 2 //accepted
     //based on hint :( need to be better
     public List<List<String>> groupAnagrams(String[] strs) {
@@ -64,7 +64,7 @@ public class Apr6_49 {
 
     public static void main(String[] args){
         //test cases
-        Apr6_49 apr649 = new Apr6_49();
+        Apr6_P49 apr649 = new Apr6_P49();
 
 //        Utils.printListList(apr6.groupAnagrams(new String[]{"ray","cod","abe","ned","arc","jar","owl","pop","paw","sky","yup","fed","jul","woo","ado","why","ben","mys","den","dem","fat","you","eon","sui","oct","asp","ago","lea","sow","hus","fee","yup","eve","red","flo","ids","tic","pup","hag","ito","zoo"}));
 //        Utils.printListList(apr6.groupAnagrams(new String[]{"apt","man","qom","apt","lei","hus","pet","gay","six","mai"}));

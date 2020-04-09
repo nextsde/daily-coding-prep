@@ -21,9 +21,23 @@ public class Backtracking {
         }
     }
 
+    private static void permute(String perm, String word) {
+        if (word.isEmpty()) {
+            System.err.println(perm + word);
+        } else {
+            for (int i = 0; i < word.length(); i++) {
+                permute(perm + word.charAt(i), word.substring(0, i)
+                        + word.substring(i + 1, word.length()));
+            }
+        }
+    }
+
     public static void main(String[] args){
         Backtracking backtracking = new Backtracking();
-        int arr[] = new int[]{1,2,3};
-        backtracking.permutation(arr, 0, arr.length-1);
+//        int arr[] = new int[]{1,2,3};
+//        backtracking.permutation(arr, 0, arr.length-1);
+//        permute("", "123");
     }
+
+
 }

@@ -2,7 +2,7 @@ package com.nextswe.prep.leetcode.april30;
 
 import com.nextswe.prep.utils.Utils;
 
-public class Apr4_283 {
+public class Apr4_P283 {
     //was able to solve it quickly :D
     //kudos to me
     //time complexity: O(n)
@@ -35,7 +35,7 @@ public class Apr4_283 {
     }
 
     public static void main(String[] args) {
-        Apr4_283 apr4283 = new Apr4_283();
+        Apr4_P283 apr4283 = new Apr4_P283();
         int[] nums = new int[]{-1, 0, -1, 0};
         apr4283.moveZeroes(nums);
         Utils.printArray(nums);

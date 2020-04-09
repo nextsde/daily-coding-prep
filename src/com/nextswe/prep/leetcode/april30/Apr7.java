@@ -31,7 +31,8 @@ public class Apr7 {
     //solution 1
     //accepted
     //time complexity:O(nlogn) space complexity:O(1) if sort uses in place sorting
-/*    public boolean binSearch(int[] arr, int size, int item){
+/*
+    public boolean binSearch(int[] arr, int size, int item){
         int l = 0;
         int r = size-1;
         int m = 0;
