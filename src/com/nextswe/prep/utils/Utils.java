@@ -46,6 +46,16 @@ public class Utils {
         System.out.println();
     }
 
+    public static void printListString(List<String> colList) {
+        System.out.print("[");
+        for (int i=0; i<colList.size(); i++) {
+            System.out.print("\"");
+            System.out.print(colList.get(i) + "");
+            System.out.print("\",");
+        }
+        System.out.println("]");
+    }
+
 //    public static void printListList(List<List<Integer>> groupLists) {
 //        for (int i=0; i<groupLists.size(); i++) {
 //            System.out.print("[");

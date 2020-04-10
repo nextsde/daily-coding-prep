@@ -41,7 +41,7 @@ public class AllPermutation extends Backtrack<Integer> {
     }
 
     public void generate_permutation(int n){
-        int a[] = new int[NMAX];
+        int a[] = new int[n+1];
         backtrack(a,0,n);
     }
 
