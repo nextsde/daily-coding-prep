@@ -15,6 +15,9 @@ public class Utils {
     public static void println(int judge) {
         System.out.println(""+judge);
     }
+    public static void println(double judge) {
+        System.out.println(""+judge);
+    }
     public static void println(boolean judge) {
         System.out.println(""+judge);
     }
