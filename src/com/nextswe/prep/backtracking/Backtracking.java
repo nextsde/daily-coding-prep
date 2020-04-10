@@ -34,9 +34,9 @@ public class Backtracking {
 
     public static void main(String[] args){
         Backtracking backtracking = new Backtracking();
-//        int arr[] = new int[]{1,2,3};
-//        backtracking.permutation(arr, 0, arr.length-1);
-//        permute("", "123");
+        int arr[] = new int[]{1,2,3};
+        backtracking.permutation(arr, 0, arr.length-1);
+        permute("", "123");
     }
 
 
