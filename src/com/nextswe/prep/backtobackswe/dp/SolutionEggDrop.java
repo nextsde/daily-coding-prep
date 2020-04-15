@@ -20,7 +20,6 @@ class Solution {
     }
 
     private int eggDrop(int totalEggs, int totalFloors, int[][] cache) {
-        System.out.println("Currently processing totalEggs=["+totalEggs+"], totalFloors=["+totalFloors+"]" );
     /*
       Base Case 1:
       If we have 0 floors we need 0 trials, no matter the egg amount given
@@ -55,14 +54,14 @@ class Solution {
       This does not change the asymptotic complexity of the algorithm
     */
         for (int floor = 1; floor <= totalFloors; floor++) {
-            int costOfWorstOutcome = Math.max(eggDrop(totalEggs - 1, floor - 1, cache),
-                    eggDrop(totalEggs, totalFloors - floor, cache));
+            int eg1 = eggDrop(totalEggs - 1, floor - 1, cache);
+            int eg2 = eggDrop(totalEggs, totalFloors - floor, cache);
+            int costOfWorstOutcome = Math.max(eg1,eg2);
 
             int accountingForDroppingAtThisSubproblem = 1 + costOfWorstOutcome;
             cache[totalEggs][totalFloors] = Math.min(cache[totalEggs][totalFloors],
                     accountingForDroppingAtThisSubproblem);
         }
-        System.out.print("cache["+totalEggs+"]["+totalFloors+"]"+"="+cache[totalEggs][totalFloors]+"\n" );
         return cache[totalEggs][totalFloors];
     }
 
@@ -81,6 +80,7 @@ class Solution {
 
     public static void main(String[] args){
         Solution solution = new Solution();
-        System.out.println(solution.eggDrop(2,3));
+        int egg_drop = solution.eggDrop(2,3);
+        System.out.println(egg_drop);
     }
 }

@@ -1,4 +1,4 @@
-package com.nextswe.prep.skiena.chapter8;
+package com.nextswe.prep.dp;
 
 public class EditDistanceRecursive {
     //recursive solution with no dp

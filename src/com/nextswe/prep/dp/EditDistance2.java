@@ -1,4 +1,4 @@
-package com.nextswe.prep.skiena.chapter8;
+package com.nextswe.prep.dp;
 
 //from
 //https://jlordiales.wordpress.com/2014/03/01/dynamic-programming-edit-distance/
@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class EditDistance2 {
@@ -23,7 +24,13 @@ public class EditDistance2 {
     }
 
     public int topDownDPMemoizedEditDistance(String word1, String word2){
-        return topDownDPMemoizedEditDistance(word1,word2, new HashMap<StringTuple,Integer>());
+        Map<StringTuple,Integer> dpTable = new HashMap<>();
+        int editDist = topDownDPMemoizedEditDistance(word1,word2, dpTable);
+//        for(Map.Entry<StringTuple,Integer> entry : dpTable.entrySet()){
+//            System.out.println("s1: "+((StringTuple)entry.getKey()).s1+" - s2: "+((StringTuple)entry.getKey()).s2);
+//            System.out.println("val: "+((Integer)entry.getValue()));
+//        }
+        return editDist;
     }
 
     private int topDownDPMemoizedEditDistance(String word1, String word2, Map<StringTuple,Integer> dpTable){
@@ -89,6 +96,7 @@ public class EditDistance2 {
                 minCosts[i][j] = Math.min(replace, Math.min(delete,insert));
             }
         }
+
         return minCosts[word1Length-1][word2Length-1];
     }
 
@@ -124,7 +132,7 @@ public class EditDistance2 {
         EditDistance2 editDistance = new EditDistance2();
 //        System.out.println(editDistance.bruteForceEditDistance("horse","ros"));
 //        System.out.println(editDistance.bruteForceEditDistance("benyamdfqcasdqwe","ephremadaqeqasds"));
-//        System.out.println(editDistance.topDownDPMemoizedEditDistance("benyamdfqcasdqwe","ephremadaqeqasds"));
-        System.out.println(editDistance.bottomUpIterativeEditDistance("benyamdfqcasdqwe","ephremadaqeqasds"));
+        System.out.println(editDistance.topDownIterativeEditDistance("benyamdfqcasdqwe","ephremadaqeqasds"));
+//        System.out.println(editDistance.bottomUpIterativeEditDistance("benyamdfqcasdqwe","ephremadaqeqasds"));
     }
 }
