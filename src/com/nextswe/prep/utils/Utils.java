@@ -12,6 +12,22 @@ public class Utils {
         System.out.println();
     }
 
+    public static int min(int... numbers) {
+        int result = Integer.MAX_VALUE;
+        for (int each : numbers) {
+            result = Math.min(result, each);
+        }
+        return result;
+    }
+
+    public static int max(int... numbers) {
+        int result = Integer.MIN_VALUE;
+        for (int each : numbers) {
+            result = Math.max(result, each);
+        }
+        return result;
+    }
+
     public static void println(int judge) {
         System.out.println(""+judge);
     }
