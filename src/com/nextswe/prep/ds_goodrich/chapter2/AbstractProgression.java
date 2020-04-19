@@ -1,13 +1,13 @@
-package com.nextswe.prep.ds_goodrich;
+package com.nextswe.prep.ds_goodrich.chapter2;
 
-public class Progression {
+public abstract class AbstractProgression {
     protected long current;
 
-    public Progression(){
+    public AbstractProgression(){
         this(0);
     }
 
-    public Progression(long start){
+    public AbstractProgression(long start){
         this.current = start;
     }
 
@@ -17,9 +17,7 @@ public class Progression {
         return answer;
     }
 
-    protected void advance(){
-        current++;
-    }
+    protected abstract void advance();
 
     public void printProgression(int n){
         System.out.print(nextValue());

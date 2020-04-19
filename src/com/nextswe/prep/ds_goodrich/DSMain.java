@@ -1,5 +1,8 @@
 package com.nextswe.prep.ds_goodrich;
 
+import com.nextswe.prep.ds_goodrich.chapter2.FibonacciProgression;
+import com.nextswe.prep.ds_goodrich.chapter2.Progression;
+
 /**
  */
 public class DSMain {
@@ -17,6 +20,13 @@ public class DSMain {
     public static void main(String[] args){
         Progression progress = new FibonacciProgression(4,10);
         progress.printProgression(20);
+
+
+//        Pair<String,Double>[] holdings = new Pair[25];
+//        holdings[0] = new Pair<>("ORCL", 32.07);
+
+
+
 /*
         Counter c = new Counter();
         System.out.println(c.count);

@@ -1,6 +1,8 @@
 package com.nextswe.prep.sorts;
 
 
+import com.nextswe.prep.utils.Utils;
+
 import java.util.Random;
 
 public class BasicSort {
@@ -166,5 +168,11 @@ public class BasicSort {
 
     public static void qsort(int[] A){
         qsort(A,0,A.length-1);
+    }
+
+    public static void main(String[] args){
+        int[] A = new int[]{10,7,8,9,1,5};
+        BasicSort.selection_sort(A);
+        Utils.printArray(A);
     }
 }

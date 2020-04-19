@@ -1,6 +1,6 @@
-package com.nextswe.prep.ds_goodrich;
+package com.nextswe.prep.ds_goodrich.chapter2;
 
-public class GeometricProgression extends Progression{
+public class GeometricProgression extends Progression {
     protected long base;
 
     public GeometricProgression(){
