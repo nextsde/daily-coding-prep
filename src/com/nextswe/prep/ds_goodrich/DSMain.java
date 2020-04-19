@@ -2,6 +2,7 @@ package com.nextswe.prep.ds_goodrich;
 
 import com.nextswe.prep.ds_goodrich.chapter2.FibonacciProgression;
 import com.nextswe.prep.ds_goodrich.chapter2.Progression;
+import com.nextswe.prep.ds_goodrich.chapter3.SinglyLinkedList;
 
 /**
  */
@@ -18,14 +19,25 @@ public class DSMain {
         c.count = 15;
     }
     public static void main(String[] args){
+        SinglyLinkedList<Integer> ssl = new SinglyLinkedList<>();
+        ssl.add(10);
+        ssl.add(20);
+        ssl.add(30);
+        ssl.add(40);
+        System.out.println(ssl.toString());
+        ssl.addAt(45,2);
+        System.out.println(ssl.toString());
+        ssl.removeAt(0);
+        System.out.println(ssl.toString());
+/*
         Progression progress = new FibonacciProgression(4,10);
         progress.printProgression(20);
+*/
 
-
-//        Pair<String,Double>[] holdings = new Pair[25];
-//        holdings[0] = new Pair<>("ORCL", 32.07);
-
-
+/*
+        Pair<String,Double>[] holdings = new Pair[25];
+        holdings[0] = new Pair<>("ORCL", 32.07);
+*/
 
 /*
         Counter c = new Counter();

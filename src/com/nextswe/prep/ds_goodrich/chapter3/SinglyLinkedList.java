@@ -23,6 +23,9 @@ public class SinglyLinkedList<E> {
         if(isEmpty()) return null;
         return tail.getElement();
     }
+    public void add(E e){
+        addLast(e);
+    }
     public void addFirst(E e){
         head = new Node<>(e, head);
         if(size==0){ tail=head; }
@@ -37,6 +40,49 @@ public class SinglyLinkedList<E> {
         tail = newest;
         size++;
     }
+    public void addAt(E e, int p){
+        if(p > size || p<0){
+            throw new IllegalArgumentException("Invalid position. Give a position between 0 and "+(size-1));
+        }
+        if(head==null || p==0){
+            addFirst(e);
+        }else{
+            Node<E> temp = head;
+            int i = p-1;
+            while(i>0){
+                temp = temp.getNext();
+                i--;
+            }
+            Node<E> newest = new Node<>(e,null);
+            newest.setNext(temp.getNext());
+            temp.setNext(newest);
+            size++;
+        }
+    }
+    public E removeAt(int p){
+        if(p>size || p<0){
+            throw new IllegalArgumentException("Invalid position. Give a position between 0 and "+(size-1));
+        }
+        if(p==0){
+            return removeFirst();
+        }else{
+            Node<E> temp1 = head;
+            int i = p-1;
+            while(i>0){
+                temp1 = temp1.getNext();
+                i--;
+            }
+            Node<E> temp2 = temp1.getNext();
+            temp1.setNext(temp2.getNext());
+            E answer = temp2.getElement();
+            temp2 = null;
+            size--;
+            if(size==0)
+                tail = null;
+            return answer;
+        }
+    }
+
     public E removeFirst(){
         if(isEmpty())return null;
         E answer = head.getElement();
@@ -45,5 +91,15 @@ public class SinglyLinkedList<E> {
         if(size==0)
             tail = null;
         return answer;
+    }
+
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        Node<E> temp = head;
+        while(temp!=null){
+            sb.append("["+temp.getElement()+"]");
+            temp=temp.next;
+        }
+        return sb.toString();
     }
 }
