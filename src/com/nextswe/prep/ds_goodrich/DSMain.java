@@ -4,12 +4,22 @@ import com.nextswe.prep.ds_goodrich.chapter2.FibonacciProgression;
 import com.nextswe.prep.ds_goodrich.chapter2.Progression;
 import com.nextswe.prep.ds_goodrich.chapter3.SinglyLinkedList;
 
+import java.util.Arrays;
+
 /**
  */
 public class DSMain {
     public static void badReset(Counter c){
         c = new Counter();
         c.count = 20;
+    }
+
+    public static int[][] deepClone(int[][] original){
+        int[][] backup = new int[original.length][];
+        for(int k=0;k<original.length;k++){
+            backup[k] = original[k].clone();
+        }
+        return backup;
     }
 
     /**
