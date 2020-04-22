@@ -1,6 +1,14 @@
 package com.nextswe.prep.recursion;
 
+import com.nextswe.prep.utils.Utils;
+
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TryOut {
 /*
@@ -43,11 +51,25 @@ public class TryOut {
     }
 
     public static void printBinary(int n, String prefix){
-        if(n==0){
+        if(n==0){ //how many choices do i have left
+            //when i have nothing left to choose only then n will be zero
+            //so instead thinking it as n becoming zero or base case bacoming zero
+            //we should think the choices left for us to do
             System.out.println(prefix);
         }else{
             printBinary(n-1,prefix+"0");
             printBinary(n-1,prefix+"1");
+        }
+    }
+
+    public static void numOfCardsHand(int[] cards, int[] chosen, int n){
+        if(n==0){
+            System.out.println(Arrays.toString(chosen));
+        }else{
+            for(int i=0;i<52;i++){
+                chosen[n-1] = cards[i];
+                numOfCardsHand(cards,chosen,n-1);
+            }
         }
     }
 
@@ -60,9 +82,151 @@ public class TryOut {
             }
         }
     }
+/*
+    private static void permute(char[] arr, int choices){
+        if (choices == 0) {
+            System.out.println(Arrays.toString(arr));
+        }else{
+            for(int i=arr.length-choices;i<arr.length;i++){
+                char tmp = arr[arr.length-choices];
+                arr[arr.length-choices] = arr[i];
+                arr[i] = tmp;
+                permute(arr,choices-1);
+                //in here we need unchoose because we are modifying existing array
+                //so we need to unmodify the modification by unchoose
+                arr[i] = arr[arr.length-choices];
+                arr[arr.length-choices] = tmp;
+            }
+        }
+    }
 
-    public static void main(String[] args){
-        printBinary(3,"");
+    public static void permute(String name){
+        char[] arr = name.toCharArray();
+        permute(arr, arr.length);
+    }
+*/
+
+    public static void permute(String name,String prefix){
+        if(name.length()==0){
+            System.out.println(prefix);
+        }else{
+            for(int i=0;i<name.length();i++){
+                char ch = name.charAt(i);
+                String rest = name.substring(0,i) + name.substring(i+1);
+                permute(rest, prefix+ch);
+                //why it does not have any unchoose?
+                //because we are creating everytime a new string based on our choice
+            }
+        }
+    }
+
+    public static void diceRolls(int dice, List<Integer> prefix,String indent){
+        //if there are choices to make:
+        System.out.println(indent+Arrays.toString(prefix.toArray()));
+        if(dice==0){
+            //base case
+            System.out.println(Arrays.toString(prefix.toArray()));
+        }else{
+            //for each value for my choice:
+            for(int i=1;i<=6;i++){
+                //-choose
+                prefix.add(i);
+                //int index = prefix.indexOf(i);
+                //-search/explore
+                diceRolls(dice-1,prefix,indent+"    ");
+                //-un-choose
+                //since remove takes index we need to be careful
+                //we cannot just use prefix.remove(i);
+                prefix.remove(prefix.size()-1);
+                //prefix.remove(index);
+                //prefix.remove(prefix.indexOf(i));
+
+                //idea here is to remove what we have choosen from the list
+                //so prefix.remove(prefix.size()-1); remove the last element from the list
+                //since we are doing searching in self similar manner other calls will do their own
+                //cleanup/unchoosing which will make sure that when control returns back to us
+                //we do our own unchoosing or cleanup
+                //or we can just remember the index where we added our item in the list
+                //and remove that item from the list
+                //both will work
+            }
+        }
+    }
+
+    public static void diceRollsSum(int dice, int desiredSum, List<Integer> prefix){
+        if(dice==0){
+            //base case
+//            if(Utils.arraySum(prefix.toArray())==desiredSum){
+//            }
+            System.out.println(Arrays.toString(prefix.toArray()));
+        }else{
+            //for each value for my choice:
+            for(int i=1;i<=6;i++){
+                //-choose
+                prefix.add(i);
+                //int index = prefix.indexOf(i);
+                //-search/explore
+                if((desiredSum-i)>=0){
+                    diceRollsSum(dice-1,desiredSum-i,prefix);
+                }
+                //-un-choose
+                //since remove takes index we need to be careful
+                //we cannot just use prefix.remove(i);
+                prefix.remove(prefix.size()-1);
+                //prefix.remove(index);
+                //prefix.remove(prefix.indexOf(i));
+
+                //idea here is to remove what we have choosen from the list
+                //so prefix.remove(prefix.size()-1); remove the last element from the list
+                //since we are doing searching in self similar manner other calls will do their own
+                //cleanup/unchoosing which will make sure that when control returns back to us
+                //we do our own unchoosing or cleanup
+                //or we can just remember the index where we added our item in the list
+                //and remove that item from the list
+                //both will work
+            }
+        }
+    }
+
+    public static void sublistsHelper(List<String> list, List<String> chosen){
+        if(list.size()==0){
+            System.out.println(Arrays.toString(chosen.toArray()));
+        }else{
+            String item = list.get(0);
+            list.remove(0);
+
+            chosen.add(item);
+            sublistsHelper(list,chosen);
+            chosen.remove(chosen.size()-1);
+
+            sublistsHelper(list,chosen);
+
+            list.add(0,item);
+        }
+    }
+
+    public static void sublists(List<String> list){
+        List<String> chosen = new ArrayList<>();
+        sublistsHelper(list,chosen);
+    }
+
+    public static void main(String[] args) throws FileNotFoundException {
+        ArrayList<String> places = new ArrayList<>(Arrays.asList(
+                "Jane", "Bob", "Matt","Sara"
+        ));
+        sublists(places);
+//        diceRollsSum(3,7,new ArrayList<Integer>());
+//        diceRolls(3,new ArrayList<Integer>(),"");
+//        permute("MARTY","");
+//        int[] cards = new int[52];
+//        for(int i=0;i<52;i++){
+//            cards[i] = i+1;
+//        }
+//        int[] chosen = new int[3];
+//        PrintStream out = new PrintStream(new FileOutputStream("output.txt"));
+//        System.setOut(out);
+//        numOfCardsHand(cards,chosen,3);
+//        printBinary(3,"");
 //        crawl(".","");
 //        printBinary(42);
 //        System.out.println(isPalindrome("madam"));

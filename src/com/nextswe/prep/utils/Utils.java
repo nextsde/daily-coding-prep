@@ -4,12 +4,21 @@ import java.util.List;
 
 public class Utils {
     /* A utility function to print array of size n */
-    public static void printArray(int arr[])
+    public static void printArray(int[] arr)
     {
         int n = arr.length;
         for (int i=0; i<n; ++i)
             System.out.print(arr[i]+" ");
         System.out.println();
+    }
+
+    public static int arraySum(Object[] arr)
+    {
+        int n = arr.length;
+        int total = 0;
+        for (int i=0; i<n; ++i)
+            total+=(int)arr[i];
+        return total;
     }
 
     public static int min(int... numbers) {
