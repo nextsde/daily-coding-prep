@@ -1,8 +1,9 @@
-package com.nextswe.prep.gtg.recursion;
+package com.nextswe.prep.ds_goodrich.chapter5;
 
 import com.nextswe.prep.utils.Utils;
 
 import java.io.File;
+import java.util.Objects;
 
 public class Recursion102 {
     //code fragment 5.1
@@ -38,7 +39,7 @@ public class Recursion102 {
             System.out.print("-");
         }
         if(tickLabel>=0){
-            System.out.print(tickLabel);
+            System.out.print(" "+tickLabel);
         }
         System.out.print("\n");
     }
@@ -67,7 +68,7 @@ public class Recursion102 {
     public static long diskUsage(File root){
         long total = root.length();
         if(root.isDirectory()){
-            for(String childName : root.list()){
+            for(String childName : Objects.requireNonNull(root.list())){
                 File child = new File(root,childName);
                 total += diskUsage(child);
             }
@@ -137,16 +138,16 @@ public class Recursion102 {
     }
 
     public static void main(String[] args){
-        long c1;
-        int[] sorted_data = new int[]{1,2,4,5,7,12,23,34,56,78,98,101};
-        int[] unsorted_data = new int[]{12,20,11,9,30,13,23,34,26,28,38,41};
+//        long c1;
+//        int[] sorted_data = new int[]{1,2,4,5,7,12,23,34,56,78,98,101};
+//        int[] unsorted_data = new int[]{12,20,11,9,30,13,23,34,26,28,38,41};
 //        Utils.println(factorial(3));
 
-//        drawRuler(12,4);
+        drawRuler(1,4);
 
 //        Utils.println(binarySearch(data,34,0,data.length-1));
 
-//        diskUsage(new File("../"));
+//        System.out.println(diskUsage(new File("../")));
 //        Utils.println(linearSum(unsorted_data, unsorted_data.length-1));
 
 //        reverseArray(sorted_data,0, sorted_data.length-1);
@@ -160,12 +161,12 @@ public class Recursion102 {
 //        Utils.println(binarySum(unsorted_data,0,unsorted_data.length-1));
 //        Utils.println(System.nanoTime()-c1);
 
-        c1 = System.nanoTime();
-        Utils.println(fibonacciBad(20));
-        Utils.println(System.nanoTime()-c1);
-
-        c1 = System.nanoTime();
-        Utils.println(fibonacciGood(20)[0]);
-        Utils.println(System.nanoTime()-c1);
+//        c1 = System.nanoTime();
+//        Utils.println(fibonacciBad(20));
+//        Utils.println(System.nanoTime()-c1);
+//
+//        c1 = System.nanoTime();
+//        Utils.println(fibonacciGood(20)[0]);
+//        Utils.println(System.nanoTime()-c1);
     }
 }

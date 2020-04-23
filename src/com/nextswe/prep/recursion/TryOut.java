@@ -92,8 +92,8 @@ public class TryOut {
                 arr[arr.length-choices] = arr[i];
                 arr[i] = tmp;
                 permute(arr,choices-1);
-                //in here we need unchoose because we are modifying existing array
-                //so we need to unmodify the modification by unchoose
+                //in here we need un-choose because we are modifying existing array
+                //so we need to un-modify the modification by un-choose
                 arr[i] = arr[arr.length-choices];
                 arr[arr.length-choices] = tmp;
             }
@@ -114,8 +114,8 @@ public class TryOut {
                 char ch = name.charAt(i);
                 String rest = name.substring(0,i) + name.substring(i+1);
                 permute(rest, prefix+ch);
-                //why it does not have any unchoose?
-                //because we are creating everytime a new string based on our choice
+                //why it does not have any un-choose?
+                //because we are creating every-time a new string based on our choice
             }
         }
     }
@@ -192,15 +192,23 @@ public class TryOut {
         if(list.size()==0){
             System.out.println(Arrays.toString(chosen.toArray()));
         }else{
+            // select an element from the set
+            // and we will choose what to do with it.
             String item = list.get(0);
             list.remove(0);
-
-            chosen.add(item);
-            sublistsHelper(list,chosen);
-            chosen.remove(chosen.size()-1);
-
-            sublistsHelper(list,chosen);
-
+            //choose & explore
+            {
+                //since we have yes/no choice
+                //put that element in our chosen list as : yes
+                chosen.add(item);
+                //explore
+                sublistsHelper(list, chosen);
+                //remove from our chosen list as : no
+                chosen.remove(chosen.size() - 1);
+                //explore
+                sublistsHelper(list, chosen);
+            }
+            //un-choose
             list.add(0,item);
         }
     }
@@ -210,11 +218,34 @@ public class TryOut {
         sublistsHelper(list,chosen);
     }
 
+    public static void solveHelper(Board board, int col){
+        if(col>=board.colSize()){
+            System.out.println(board.toString());
+        }else{
+            for(int row=0;row<board.rowSize();row++){
+                if(board.isSafe(row,col)){
+                    //choose
+                    board.place(row,col);
+                    //explore
+                    solveHelper(board,col+1);
+                    //un-choose
+                    board.remove(row,col);
+                }
+            }
+        }
+    }
+
+    public static void solveQueens(Board board){
+        solveHelper(board, 0);
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
-        ArrayList<String> places = new ArrayList<>(Arrays.asList(
-                "Jane", "Bob", "Matt","Sara"
-        ));
-        sublists(places);
+        Board board = new Board(6,8);
+        solveQueens(board);
+//        ArrayList<String> places = new ArrayList<>(Arrays.asList(
+//                "Jane", "Bob", "Matt","Sara"
+//        ));
+//        sublists(places);
 //        diceRollsSum(3,7,new ArrayList<Integer>());
 //        diceRolls(3,new ArrayList<Integer>(),"");
 //        permute("MARTY","");
