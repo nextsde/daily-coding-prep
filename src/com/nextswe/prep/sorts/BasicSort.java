@@ -1,6 +1,8 @@
 package com.nextswe.prep.sorts;
 
 
+import com.nextswe.prep.utils.Utils;
+
 import java.util.Random;
 
 public class BasicSort {
@@ -81,32 +83,14 @@ public class BasicSort {
 
 
     private static void merge(int[] left, int[] right, int[] A){
-        int nL = left.length;
-        int nR = right.length;
-        int i = 0;
-        int j = 0;
-        int k = 0;
-
+        int nL = left.length, nR = right.length;
+        int i = 0, j = 0, k = 0;
         while(i<nL && j<nR){
-            if(left[i]<=right[j]){
-                A[k] = left[i];
-                i++;
-            }else{
-                A[k] = right[j];
-                j++;
-            }
-            k++;
+            if(left[i]<=right[j]) A[k++] = left[i++];
+            else A[k++] = right[j++];
         }
-        while(i<nL){
-            A[k] = left[i];
-            i++;
-            k++;
-        }
-        while(j<nR){
-            A[k] = right[j];
-            j++;
-            k++;
-        }
+        while(i<nL){ A[k++] = left[i++]; }
+        while(j<nR){ A[k++] = right[j++]; }
     }
 
     public static void mergesort(int A[]){
@@ -166,5 +150,11 @@ public class BasicSort {
 
     public static void qsort(int[] A){
         qsort(A,0,A.length-1);
+    }
+
+    public static void main(String[] args){
+        int[] A = new int[]{10,7,8,9,1,5};
+        BasicSort.qsort(A);
+        Utils.printArray(A);
     }
 }

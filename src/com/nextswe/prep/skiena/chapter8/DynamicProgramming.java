@@ -62,6 +62,34 @@ public class DynamicProgramming {
         return bc[n][k];
     }
 
+
+    public void partition(int[] s, int k){
+        int[][] m = new int[s.length][k+1];
+        int[][] d = new int[s.length][k+1];
+        int[] p = new int[s.length];
+        int cost;
+
+        p[0] = 0;
+        for(int i=1;i<=s.length;i++)
+            p[i] = p[i-1] + s[i];
+
+        for(int i=1;i<=s.length;i++) m[i][1] = p[i];
+        for(int j=1;j<=k;j++) m[1][j] = s[1];
+
+        for(int i=2;i<=s.length;i++) {
+            for (int j = 2; j <= k; j++) {
+                m[i][j] = Integer.MAX_VALUE;
+                for (int x = 1; x <= (i - 1); x++) {
+                    cost = Math.max(m[x][j - 1], p[i] - p[x]);
+                    if (m[i][j] > cost) {
+                        m[i][j] = cost;
+                        d[i][j] = x;
+                    }
+                }
+            }
+        }
+    }
+
     public static void main(String[] args){
         DynamicProgramming dynamicProgramming = new DynamicProgramming();
 //        System.out.println(fibOfN.fib_r(50));
