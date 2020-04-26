@@ -1,7 +1,7 @@
 package com.nextswe.prep.ds_goodrich.chapter6;
 
 /* Simplified version of java.util.List interface */
-public interface List<E> {
+public interface List<E> extends Iterable<E>{
     /*
     Returns the number of elements in the list
     */

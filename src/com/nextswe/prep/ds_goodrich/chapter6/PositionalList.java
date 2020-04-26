@@ -3,7 +3,7 @@ package com.nextswe.prep.ds_goodrich.chapter6;
 /*
     ADT for positional lists
 */
-public interface PositionalList<E> {
+public interface PositionalList<E> extends Iterable<E>{
     /*
     Returns the number of elements in the list
      */

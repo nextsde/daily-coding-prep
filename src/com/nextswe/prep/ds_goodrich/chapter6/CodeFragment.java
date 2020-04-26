@@ -1,5 +1,8 @@
 package com.nextswe.prep.ds_goodrich.chapter6;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 public class CodeFragment {
     /* A generic method for reversing an array. */
     public static <E> void reverse(E[] a){
@@ -65,18 +68,72 @@ public class CodeFragment {
     }
 
 
+    public static void insertionSort(PositionalList<Integer> list){
+        Position<Integer> marker = list.first();
+        while(marker!=list.last()){
+            Position<Integer> pivot = list.after(marker);
+            int value = pivot.getElement();
+            if(value>marker.getElement()){
+                marker = pivot;
+            }else{
+                Position<Integer> walk = marker;
+                while(walk!=list.first() && list.before(walk).getElement()>value){
+                    walk = list.before(walk);
+                }
+                list.remove(pivot);
+                list.addBefore(walk,value);
+            }
+        }
+    }
 
     public static void main(String[] args){
-        ArrayDeque<Integer> deque = new ArrayDeque<>();
-        deque.addLast(5);
-        System.out.println(deque.toString());
-        deque.addFirst(3);
-        System.out.println(deque.toString());
-        deque.addFirst(7);
-        System.out.println(deque.toString());
-        System.out.println(deque.first());
-        System.out.println(deque.removeLast());
-        System.out.println(deque.toString());
+
+        Integer[ ] arr = {1, 2, 3, 4, 5, 6, 7, 8}; // allowed by autoboxing
+        System.out.println(Arrays.toString(arr));
+        java.util.List<Integer> listArr = Arrays.asList(arr);
+        Collections.shuffle(listArr);
+        System.out.println(Arrays.toString(arr));
+
+        LinkedPositionalList<Integer> pList = new LinkedPositionalList<>();
+        for(Integer item: listArr){
+            pList.addFirst(item);
+        }
+
+        insertionSort(pList);
+
+        for(Position<Integer> item: pList.positions()){
+            System.out.print(item.getElement()+" ");
+        }
+
+//        LinkedList<String> ll = new LinkedList<>();
+//        ll.add("Alice1");
+//        ll.add("Alice2");
+//        ll.add("Alice3");
+//        ll.add("Alice4");
+//        ll.add("Alic5");
+//        ll.add("Alice6");
+//        ListIterator<String> ltr = ll.listIterator();
+//        ltr.add("qwe");
+//        while(ltr.hasNext()){
+//            System.out.println(ltr.next());
+//        }
+//        ltr = ll.listIterator();
+//        while(ltr.hasNext()){
+//            System.out.println(ltr.next());
+//        }
+
+
+//        ArrayDeque<Integer> deque = new ArrayDeque<>();
+//        deque.addLast(5);
+//        System.out.println(deque.toString());
+//        deque.addFirst(3);
+//        System.out.println(deque.toString());
+//        deque.addFirst(7);
+//        System.out.println(deque.toString());
+//        System.out.println(deque.first());
+//        System.out.println(deque.removeLast());
+//        System.out.println(deque.toString());
+
 //        String[] a1 = {"Alice","Bob","Cindy","Doug","Ed","Fred"};
 //        String[] a2 = {"Gene","Hope","Irene","Jack","Kim","Lance"};
 //        String[] a3 = {"Mike","Roberto"};
