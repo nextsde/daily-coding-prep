@@ -1,10 +1,10 @@
-package com.nextswe.prep.ds_goodrich.chapter6;
+package com.nextswe.prep.ds_goodrich.chapter7;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedPositionalList<E> implements PositionalList<E>{
-    private static class Node<E> implements Position<E>{
+public class LinkedPositionalList<E> implements PositionalList<E> {
+    private static class Node<E> implements Position<E> {
         private E element;
         private Node<E> next;
         private Node<E> prev;

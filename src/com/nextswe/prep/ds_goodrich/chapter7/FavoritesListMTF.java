@@ -1,4 +1,4 @@
-package com.nextswe.prep.ds_goodrich.chapter6;
+package com.nextswe.prep.ds_goodrich.chapter7;
 
 public class FavoritesListMTF<E> extends FavoritesList<E> {
 

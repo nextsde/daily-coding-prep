@@ -1,4 +1,4 @@
-package com.nextswe.prep.ds_goodrich.chapter6;
+package com.nextswe.prep.ds_goodrich.chapter7;
 
 /*
     ADT for positional lists
