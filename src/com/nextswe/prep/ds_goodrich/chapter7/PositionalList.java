@@ -52,4 +52,6 @@ public interface PositionalList<E> extends Iterable<E>{
     Removes the element stored at Position p and returns it (invalidating p).
      */
     E remove(Position<E> p) throws IllegalArgumentException;
+
+    Iterable<Position<E>> positions();
 }
