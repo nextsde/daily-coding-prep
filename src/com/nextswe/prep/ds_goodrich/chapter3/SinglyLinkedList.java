@@ -103,6 +103,15 @@ public class SinglyLinkedList<E> implements Cloneable{
         return sb.toString();
     }
 
+    public int hashCode(){
+        int h = 0;
+        for(Node walk=head; walk!=null; walk = walk.getNext()){
+            h ^= walk.getElement().hashCode(); // bitwise exclusive-or with element’s code
+            h = (h<<5)|(h>>>27); // 5-bit cyclic shift of composite code
+        }
+        return h;
+    }
+
     public boolean equals(Object o){
         if(o==null)return false;
         if(getClass()!=o.getClass())return false;

@@ -116,6 +116,11 @@ public class BasicSort {
     static Random randomNumberGenerator = new Random();
 
     private static int randomizedPartition(int[] A, int start, int end){
+        // we need to pick a random value between start and end
+        // so, pick a random value between 0 and end(exclusive)
+        // now add start with rnd
+        // for extra guard mod rnd with end-start to make sure
+        // rnd is in between the range of end-start
         int rnd = randomNumberGenerator.nextInt(end);
         int pivotIndex = start+ (rnd %(end-start));
         int tmp =  A[pivotIndex];
