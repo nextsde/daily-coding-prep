@@ -1,8 +1,10 @@
 package com.nextswe.prep.leetcode.daily;
 
 import java.util.Arrays;
+
 //https://leetcode.com/problems/increasing-decreasing-string/
 public class P1370 {
+    //accepted //my solution
     public String sortString(String s) {
         StringBuilder sb = new StringBuilder();
         if(s==null || s.length()==0){
@@ -57,11 +59,29 @@ public class P1370 {
         System.out.println(mP1370.sortString("leetcode"));
         System.out.println(mP1370.sortString("ggggggg"));
         System.out.println(mP1370.sortString("spo"));
-        System.out.println(mP1370.sortString(null));
     }
-
     //better solution by others
 /*
+    public String sortString(String s) {
+        StringBuilder ans = new StringBuilder();
+        TreeMap<Character, Integer> tm = new TreeMap<>();
+        for (char c : s.toCharArray()) {
+            tm.put(c, 1 + tm.getOrDefault(c, 0));
+        }
+        boolean asc = true;
+        while (!tm.isEmpty()) {
+            for (char c : asc ? new TreeSet<>(tm.keySet()) : new TreeSet<>(tm.descendingKeySet())) {
+                ans.append(c);
+                tm.put(c, tm.get(c) - 1);
+                tm.remove(c, 0);
+            }
+            asc = !asc; // same as asc ^= true;
+        }
+        return ans.toString();
+    }
+*/
+/*
+
     public String sortString(String s) {
         int len = s.length();
         int[] freq = new int[26];
