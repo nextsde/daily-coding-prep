@@ -3,6 +3,7 @@ package com.nextswe.prep.ds_goodrich.chapter10;
 import com.nextswe.prep.ds_goodrich.chapter9.Entry;
 
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class Chapter10_Main {
     static int hashCode(String s){
