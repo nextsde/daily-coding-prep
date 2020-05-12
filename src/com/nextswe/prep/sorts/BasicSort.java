@@ -82,15 +82,27 @@ public class BasicSort {
     }
 
 
+//    private static void merge(int[] left, int[] right, int[] A){
+//        int nL = left.length, nR = right.length;
+//        int i = 0, j = 0, k = 0;
+//        while(i<nL && j<nR){
+//            if(left[i]<=right[j]) A[k++] = left[i++];
+//            else A[k++] = right[j++];
+//        }
+//        while(i<nL){ A[k++] = left[i++]; }
+//        while(j<nR){ A[k++] = right[j++]; }
+//    }
+
     private static void merge(int[] left, int[] right, int[] A){
         int nL = left.length, nR = right.length;
-        int i = 0, j = 0, k = 0;
-        while(i<nL && j<nR){
-            if(left[i]<=right[j]) A[k++] = left[i++];
-            else A[k++] = right[j++];
+        int i = 0, j = 0;
+        while(i+j<A.length){
+            if(j==nR || (i<nL && left[i]<right[j])){
+                A[i+j] = left[i++];
+            }else{
+                A[i+j] = right[j++];
+            }
         }
-        while(i<nL){ A[k++] = left[i++]; }
-        while(j<nR){ A[k++] = right[j++]; }
     }
 
     public static void mergesort(int A[]){
@@ -159,7 +171,7 @@ public class BasicSort {
 
     public static void main(String[] args){
         int[] A = new int[]{10,7,8,9,1,5};
-        BasicSort.qsort(A);
+        BasicSort.mergesort(A);
         Utils.printArray(A);
     }
 }

@@ -1,6 +1,7 @@
 package com.nextswe.prep.utils;
 
 import java.util.List;
+import java.util.Random;
 
 public class Utils {
     public static void print2D(int mat[][])
@@ -19,6 +20,32 @@ public class Utils {
         int n = arr.length;
         for (int i=0; i<n; ++i)
             System.out.print(arr[i]+" ");
+        System.out.println();
+    }
+
+    /* A utility function to print array of size n */
+    public static void printArray(Integer[] arr)
+    {
+        int n = arr.length;
+        for (int i=0; i<n; ++i)
+            System.out.print(arr[i]+" ");
+        System.out.println();
+    }
+
+    /* A utility function to print array of size n */
+    public static <K> void printArray(K[] arr)
+    {
+        int n = arr.length;
+        for (int i=0; i<n; ++i)
+            System.out.print(arr[i]+" ");
+        System.out.println();
+    }
+
+    public static <Integer> void printPlainList(List<Integer> arr)
+    {
+        int n = arr.size();
+        for (int i=0; i<n; ++i)
+            System.out.print(arr.get(i)+" ");
         System.out.println();
     }
 
@@ -89,6 +116,34 @@ public class Utils {
             System.out.print("\",");
         }
         System.out.println("]");
+    }
+
+    public static int[] getRandomIntArray(int nItems, int start, int end){
+        Random rand = new Random();
+        rand.setSeed(System.nanoTime());
+        int[] data = new int[nItems];
+        for (int i = 0; i < data.length; i++) {
+            data[i] = start + rand.nextInt(end-start);
+        }
+        return data;
+    }
+
+    public static int[] getRandomIntArray(int nItems, int bound){
+        return getRandomIntArray(nItems,0,bound);
+    }
+
+    public static int[] getRandomIntArray(int nItems){
+        return getRandomIntArray(nItems,100);
+    }
+
+    public static Integer[] getRandomIntegerArray(int nItems){
+        Random rand = new Random();
+        rand.setSeed(System.currentTimeMillis());
+        Integer[] data = new Integer[nItems];
+        for (int i = 0; i < data.length; i++) {
+            data[i] = rand.nextInt(100);
+        }
+        return data;
     }
 
 //    public static void printListList(List<List<Integer>> groupLists) {
