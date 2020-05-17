@@ -2,9 +2,39 @@ package com.nextswe.prep;
 
 import com.nextswe.prep.skiena.chapter5.SKGraph;
 import com.nextswe.prep.skiena.chapter5.SKGraphBuilder;
+import com.nextswe.prep.utils.Utils;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
+    public static List<Integer> kSubArraySum(int A[], int k){
+        int[] window = new int[k];
+        Arrays.fill(window,0);
+        int runningSum = 0;
+        int sliding_next_index = 0;
+        int sliding_prev_index = 0;
+        for(int i=0;i<A.length;i++){
+            sliding_prev_index = (i-1+k)%k;
+            runningSum -= window[sliding_prev_index];
+            sliding_next_index = (i+k)%k;
+            window[sliding_next_index] = A[i];
+
+            runningSum += window[sliding_next_index];
+
+            if(i+1>=k){
+                System.out.println(Arrays.toString(window));
+                runningSum = 0;
+            }
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
+        int[] arr = Utils.getRandomIntArray(20);
+        System.out.println(Arrays.toString(arr));
+        kSubArraySum(arr,4);
+/*
 //        Apr3_P53 apr3P53 = new Apr3_P53();
 //        System.out.println(apr3P53.maxSubArray(new int[]{-1}));
         SKGraphBuilder skGraphBuilder = new SKGraphBuilder();
@@ -23,5 +53,6 @@ public class Main {
 //        Utils.printArray(A);
 //        Apr2_P202 p202 = new Apr2_P202();
 //        System.out.println(p202.isHappy(1234));
+*/
     }
 }

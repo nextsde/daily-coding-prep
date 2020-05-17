@@ -11,6 +11,16 @@ https://www.youtube.com/watch?v=iOaRjDT0vjc
 
 https://brilliant.org/wiki/egg-dropping/
 
+-> Matrix Chain Multiplication
+https://www.youtube.com/watch?v=_WncuhSJZyA
+
+-> Longest Common Subsequence
+https://www.youtube.com/watch?v=ASoaQq66foQ
+
+-> 0/1 KnapSack Problem
+https://www.youtube.com/watch?v=8LusJS5-AGo
+
+
 NP-Hard & NP-Complete
 
 https://www.youtube.com/watch?v=e2cF8a5aAhE

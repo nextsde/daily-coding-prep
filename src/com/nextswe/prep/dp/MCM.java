@@ -1,4 +1,4 @@
-package com.nextswe.prep.abdulbari;
+package com.nextswe.prep.dp;
 
 //Matrix chain multiplication
 public class MCM {
