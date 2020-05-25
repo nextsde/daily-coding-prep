@@ -44,7 +44,7 @@ public class HeapAdaptablePriorityQueue<K,V> extends HeapPriorityQueue<K,V>
 
     public Entry<K,V> insert(K key, V value) throws IllegalArgumentException{
         checkKey(key);
-        Entry<K,V> newest = new AdaptablePQEntry(key,value, heap.size());
+        Entry<K,V> newest = new AdaptablePQEntry<>(key,value, heap.size());
         heap.add(newest);
         upheap(heap.size()-1);
         return newest;

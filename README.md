@@ -26,3 +26,7 @@ NP-Hard & NP-Complete
 https://www.youtube.com/watch?v=e2cF8a5aAhE
 
 https://www.youtube.com/watch?v=qZs767KQcvE
+
+Transitive Closure
+
+https://www.youtube.com/watch?v=OO8Jfs9uZnc
