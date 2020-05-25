@@ -1,4 +1,4 @@
-class Solution:
+""" class Solution:
     def wordBreak(self, S: str, wordDict: List[str]) -> bool:
         def find(left):
             if left == len(S): return True
@@ -15,7 +15,7 @@ class Solution:
         dp = {}
         words = set(wordDict)
         return find(0)
-
+ """
 class Solution:
     def wordBreak(self, S: str, wordDict: List[str]) -> bool:
         dp = [False]* (len(S)+1)
