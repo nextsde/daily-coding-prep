@@ -14,14 +14,5 @@ public class P191 {
     public static void main(String[] args){
         P191 mP191 = new P191();
         System.out.println(mP191.hammingWeight(-3));
-
-
-        // Detect if two integers have opposite signs
-        int x = -20, y = -x;
-//        Integer.toBinaryString();
-        boolean opposite = (( x ^ y ) < 0 );
-        System.out.println(Integer.toBinaryString(x));
-        System.out.println(Integer.toBinaryString(y));
-        System.out.println(Integer.toBinaryString(x ^ y));
     }
 }
