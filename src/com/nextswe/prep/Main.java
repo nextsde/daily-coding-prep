@@ -30,6 +30,8 @@ public class Main {
         return null;
     }
 
+    static double phi = 0.5*(Math.sqrt(5)+1);
+
     public static void main(String[] args) {
         int[] arr = Utils.getRandomIntArray(20);
         System.out.println(Arrays.toString(arr));
