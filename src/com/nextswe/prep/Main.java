@@ -4,8 +4,8 @@ import com.nextswe.prep.skiena.chapter5.SKGraph;
 import com.nextswe.prep.skiena.chapter5.SKGraphBuilder;
 import com.nextswe.prep.utils.Utils;
 
-import java.util.Arrays;
-import java.util.List;
+import java.security.Security;
+import java.util.*;
 
 public class Main {
     public static List<Integer> kSubArraySum(int A[], int k){
@@ -29,6 +29,8 @@ public class Main {
         }
         return null;
     }
+
+    static double phi = 0.5*(Math.sqrt(5)+1);
 
     public static void main(String[] args) {
         int[] arr = Utils.getRandomIntArray(20);
