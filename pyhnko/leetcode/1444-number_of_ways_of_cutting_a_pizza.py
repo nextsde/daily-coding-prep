@@ -28,7 +28,3 @@ class Solution:
         
         dp = {}
         return solve(0, 0, k-1)
-        \¬r4Hard|¬r4Be#er
-        |¬r4Hard\¬r4Be#er <<--buena!
-        |¬r4Hard|¬r4Be#er
-        |¬r4Hard|¬r4Be|¬er
