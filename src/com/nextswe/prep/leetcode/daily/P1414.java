@@ -6,6 +6,7 @@ import java.util.List;
 
 public class P1414 {
 
+
     public int findMinFibonacciNumbers(int k) {
         List<Integer> fibList = new ArrayList<>();
         int f0 = 1;
@@ -81,6 +82,6 @@ public class P1414 {
         P1414 mP1414 = new P1414();
 //        System.out.println(mP1414.fib(7));
 //        System.out.println(mP1414.fib_range(5));
-        System.out.println(mP1414.findMinFibonacciNumbers(113));
+        System.out.println(mP1414.findMinFibonacciNumbers(10));
     }
 }
