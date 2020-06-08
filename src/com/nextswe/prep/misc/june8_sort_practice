@@ -1,0 +1,67 @@
+    //quick sort practice - June 8,2020
+    public static Random rnd = new Random();
+    public static int getRandomPivot(int[] A, int start, int end){
+        int rand_pos = start+rnd.nextInt(end-start);
+        int tmp = A[rand_pos];
+        A[rand_pos] = A[end];
+        A[end] = tmp;
+        return getPivot(A,start,end);
+    }
+    public static int getPivot(int[] A, int start, int end){
+        int pv = A[end];
+        int pi = start;
+        for(int i=start;i<end;i++){
+            if(A[i]<pv){
+                int tmp = A[pi];
+                A[pi] = A[i];
+                A[i] = tmp;
+                pi++;
+            }
+        }
+        int tmp = A[pi];
+        A[pi] = A[end];
+        A[end] = tmp;
+        return pi;
+    }
+    public static void quick_sort(int[] A, int start, int end){
+        if(start<end){
+            int pIndex = getRandomPivot(A,start,end);
+            quick_sort(A,start,pIndex-1);
+            quick_sort(A,pIndex+1,end);
+        }
+    }
+    //merge sort practice - June 8,2020
+    public static void merge(int[] A, int[] p1, int[] p2){
+        int i=0;
+        int j=0;
+        int k=0;
+        while(i<p1.length&&j<p2.length){
+            if(p1[i]<p2[j]){
+                A[k++] = p1[i++];
+            }else{
+                A[k++] = p2[j++];
+            }
+        }
+        while(i<p1.length){
+            A[k++] = p1[i++];
+        }
+        while(j<p2.length){
+            A[k++] = p2[j++];
+        }
+    }
+    public static void merge_sort(int[] A){
+        if(A.length>1){
+            int mid = A.length/2;
+            int[] p1 = new int[mid];
+            int[] p2 = new int[A.length-mid];
+            for(int i=0;i<mid;i++){
+                p1[i] = A[i];
+            }
+            for(int i=0;i<A.length-mid;i++){
+                p2[i] = A[mid+i];
+            }
+            merge_sort(p1);
+            merge_sort(p2);
+            merge(A,p1,p2);
+        }
+    }
