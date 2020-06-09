@@ -70,6 +70,8 @@ public class P567 {
             else if (s2map[l] == s1map[l] - 1)
                 count--;
         }
+        System.out.println(Arrays.toString(s1map));
+        System.out.println(Arrays.toString(s2map));
         return count == 26;
     }
     public static void main(String[] args){

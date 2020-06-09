@@ -164,10 +164,38 @@ public class ChapterVII {
         return true;
     }
 
-
+    public static void countPairs(){
+        int[] A = {3,1,4,1,5};
+//        int[] A = {1,7,5,9,2,12,3};
+        int n = A.length;
+        int k = 2;
+        //brute force
+        //in here the bottleneck is repeated searching for the other side
+        //when we have found A[i] we are looking for through each element except A[i]
+        //to check if A[j] is the other side or not
+        //we can optimize that
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(Math.abs(A[i]-A[j])==k){
+                    System.out.print("["+A[i]+","+A[j]+"],");
+                }
+            }
+        }
+        //we know |A[i]-A[j]| = k so, |A[i]-k| = A[j]
+        //first optimization: if we sort the array we can optimize the second step to be
+        //by using binary search in the sorted array
+//        Arrays.sort(A);
+//        for(int i=0;i<n;i++){
+//            int otherside = A[i]-k;
+//            if(Arrays.binarySearch(A,otherside)>=0){
+//                System.out.print("["+A[i]+","+otherside+"],");
+//            }
+//        }
+    }
 
     public static void main(String[] args){
         ChapterVII mChapterVII = new ChapterVII();
-        findAllPermutation("abbc","cbabadcbbabbcbabaabccbabc");
+//        findAllPermutation("abbc","cbabadcbbabbcbabaabccbabc");
+        countPairs();
     }
 }
