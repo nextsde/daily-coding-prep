@@ -1,13 +1,14 @@
 package com.nextswe.prep;
 
-import com.nextswe.prep.skiena.chapter5.SKGraph;
-import com.nextswe.prep.skiena.chapter5.SKGraphBuilder;
 import com.nextswe.prep.utils.Utils;
 
-import java.security.Security;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
+
+
+
     public static List<Integer> kSubArraySum(int A[], int k){
         int[] window = new int[k];
         Arrays.fill(window,0);
@@ -33,9 +34,12 @@ public class Main {
     static double phi = 0.5*(Math.sqrt(5)+1);
 
     public static void main(String[] args) {
-        int[] arr = Utils.getRandomIntArray(20);
-        System.out.println(Arrays.toString(arr));
-        kSubArraySum(arr,4);
+//        int[] arr = Utils.getRandomIntArray(20);
+//        System.out.println(Arrays.toString(arr));
+//        kSubArraySum(arr,4);
+//        System.out.println(323/100);
+
+
 /*
 //        Apr3_P53 apr3P53 = new Apr3_P53();
 //        System.out.println(apr3P53.maxSubArray(new int[]{-1}));
