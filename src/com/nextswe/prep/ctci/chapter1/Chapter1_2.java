@@ -5,10 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Chapter1_2 {
-    //Question: Given two strings, write a method to decide if one is a permutation of the other
     /*
-    Ask:
+    Question: Given two strings, write a method to decide if one is a permutation of the other
+
     DON'T START WRITING CODE:
+
+    Ask:
     Come up with clarifying and insightful questions. Although you are interviewing for the job.
     But you will solve real world problem with your knowledge which will have real impact.
 

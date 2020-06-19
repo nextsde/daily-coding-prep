@@ -60,5 +60,6 @@ public class Main {
 //        Apr2_P202 p202 = new Apr2_P202();
 //        System.out.println(p202.isHappy(1234));
 */
+        System.out.println(Character.getNumericValue('e'));
     }
 }

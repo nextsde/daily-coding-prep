@@ -4,10 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Chapter1_1 {
-    //Question: Implement an algorithm to determine if a string has all unique characters.
     /*
-    Ask:
+    Question: Implement an algorithm to determine if a string has all unique characters.
+
     DON'T START WRITING CODE:
+
+    Ask:
     Come up with clarifying and insightful questions. Although you are interviewing for the job.
     But you will solve real world problem with your knowledge which will have real impact.
 
