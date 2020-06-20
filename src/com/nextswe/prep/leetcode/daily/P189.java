@@ -1,9 +1,105 @@
 package com.nextswe.prep.leetcode.daily;
 
 import java.util.Arrays;
-// TODO
-// not accepted, try later
-public class P189_trylater {
+
+
+public class P189 {
+
+    // TODO
+    //my solution: improve
+   /*public void rotate(int[] nums, int k) {
+       if(nums==null || nums.length==0 || nums.length==1){
+           return;
+       }
+       int[] arr = nums.clone();
+       for(int i=0;i<arr.length;i++){
+           int newpos = (i+k)%nums.length;
+           nums[newpos] = arr[i];
+       }
+   }*/
+    //solution from article easy:
+    public void rotate(int[] nums, int k) {
+        /*
+         for example: rotating [1,2,3] 4 times means,
+         1-2-3 -> 3-1-2 -> 2-3-1 -> 1-2-3 -> 3-1-2
+         if we rotate 3 elements array 3 times it will be same as before.
+         so, if k>nums.length rotating k = k % nums.length is the same as rotating k times.
+         */
+        k %= nums.length;
+        reverse(nums,0,nums.length-1);
+        reverse(nums,0,k);
+        reverse(nums,k,nums.length-1);
+    }
+
+    private void reverse(int[] nums, int start, int end){
+        while(start<end){
+            int tmp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = tmp;
+            start++;
+            end--;
+        }
+    }
+
+
+    //solution from article
+    //hard to grasp
+/*
+   public void rotate(int[] nums, int k) {
+        k = k % nums.length;
+        int count = 0;
+        for (int start = 0; count < nums.length; start++) {
+            int current = start;
+            int prev = nums[start];
+            do {
+                int next = (current + k) % nums.length;
+                int temp = nums[next];
+                nums[next] = prev;
+                prev = temp;
+                current = next;
+                count++;
+            } while (start != current);
+        }
+    }*/
+
+    public static void main(String[] args){
+        P189 pP189 = new P189();
+        int[] nums;
+
+        nums = new int[]{1};
+        pP189.rotate(nums,3);
+        System.out.println(Arrays.toString(nums));
+
+        nums = new int[]{1,2};
+        pP189.rotate(nums,3);
+        System.out.println(Arrays.toString(nums));
+
+        nums = new int[]{1,2,3};
+        pP189.rotate(nums,3);
+        System.out.println(Arrays.toString(nums));
+
+        nums = new int[]{1,2,3,4,5,6,7};
+        pP189.rotate(nums,3);
+        System.out.println(Arrays.toString(nums));
+
+        nums = new int[]{1,2,3,4,5,6};
+        pP189.rotate(nums,2);
+        System.out.println(Arrays.toString(nums));
+
+        nums = new int[]{1,2,3,4,5,6};
+        pP189.rotate(nums,3);
+        System.out.println(Arrays.toString(nums));
+
+        nums = new int[]{1};
+        pP189.rotate(nums,1);
+        System.out.println(Arrays.toString(nums));
+
+        nums = new int[]{1};
+        pP189.rotate(nums,0);
+        System.out.println(Arrays.toString(nums));
+
+
+    }
 
 //    public void rotate(int[] nums, int k) {
 //        if(nums == null || nums.length < 2 || k==0){
@@ -57,62 +153,6 @@ public class P189_trylater {
             tmp = tmp2;
         }
     }*/
-
-    public void rotate(int[] nums, int k) {
-        k = k % nums.length;
-        int count = 0;
-        for (int start = 0; count < nums.length; start++) {
-            int current = start;
-            int prev = nums[start];
-            do {
-                int next = (current + k) % nums.length;
-                int temp = nums[next];
-                nums[next] = prev;
-                prev = temp;
-                current = next;
-                count++;
-            } while (start != current);
-        }
-    }
-
-    public static void main(String[] args){
-        P189_trylater pP189 = new P189_trylater();
-        int[] nums;
-
-        nums = new int[]{1};
-        pP189.rotate(nums,3);
-        System.out.println(Arrays.toString(nums));
-
-        nums = new int[]{1,2};
-        pP189.rotate(nums,3);
-        System.out.println(Arrays.toString(nums));
-
-        nums = new int[]{1,2,3};
-        pP189.rotate(nums,3);
-        System.out.println(Arrays.toString(nums));
-
-        nums = new int[]{1,2,3,4,5,6,7};
-        pP189.rotate(nums,3);
-        System.out.println(Arrays.toString(nums));
-
-        nums = new int[]{1,2,3,4,5,6};
-        pP189.rotate(nums,2);
-        System.out.println(Arrays.toString(nums));
-
-        nums = new int[]{1,2,3,4,5,6};
-        pP189.rotate(nums,3);
-        System.out.println(Arrays.toString(nums));
-
-        nums = new int[]{1};
-        pP189.rotate(nums,1);
-        System.out.println(Arrays.toString(nums));
-
-        nums = new int[]{1};
-        pP189.rotate(nums,0);
-        System.out.println(Arrays.toString(nums));
-
-
-    }
 
 //      time limit exceeded
 //    public void rotate(int[] nums, int k) {
