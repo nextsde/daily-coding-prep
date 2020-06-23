@@ -40,21 +40,20 @@ public class Chapter1_4 {
     //my approach
     static boolean isPalindromePermutation(String str){
         Map<Integer, Integer> mp = new HashMap<>();
+        int count = 0;
         for(int i=0;i<str.length();i++){
             int x = getCharNumber(str.charAt(i));
             if(x!=-1){
-                int v = 0;
+                int v;
                 if(mp.getOrDefault(x,0)>0){
+                    count--;
                     v = mp.getOrDefault(x,0)-1;
                 }else{
+                    count++;
                     v = mp.getOrDefault(x,0)+1;
                 }
                 mp.put(x,v);
             }
-        }
-        int count = 0;
-        for(Integer key: mp.keySet()){
-            count += mp.get(key);
         }
         return count<=1;
     }
@@ -76,6 +75,7 @@ public class Chapter1_4 {
         }
         return true;
     }
+
     static int getCharNumber(Character c){
 //        int a = Character.getNumericValue('A');
 //        int z = Character.getNumericValue('Z');

@@ -48,20 +48,36 @@ public class RotatedSortedArray {
 //            }
 //        }
 
+
+//        int low = 0;
+//        int high = arr.length-1;
+//        int last = arr[high];
+//        while(low<high){
+//            int mid = low + (high-low)/2;
+//            int value = arr[mid];
+//            if(value>last){
+//                low = mid+1;
+//            }else{
+//                high = mid;
+//            }
+//        }
+
         int low = 0;
         int high = arr.length-1;
         int last = arr[high];
-        while(low<high){
+        int ans = -1;
+        while(low<=high){
             int mid = low + (high-low)/2;
             int value = arr[mid];
             if(value>last){
                 low = mid+1;
             }else{
-                high = mid;
+                ans = mid;
+                high = mid-1;
             }
         }
 
-        int start = low;
+        int start = ans;
         low = 0;
         high = arr.length-1;
 

@@ -24,82 +24,70 @@ public class Chapter1_5 {
 
 
     My thought:
-    Palindrome can be thought of as a mirror. A string, whose left and right part are mirror of one another
-    we can say that is a palindrome.
-    For example:
-    Ab b bA , RAC-E-CAR, ABBA
-
-    In a palindrome string we can have two situation where one's length is odd and the others length is even.
-
-    From above we can see that in a palindrome max 0 or 1 character can have odd frequency and the rest should
-    have even frequency.
-
-    Using this insight, all we need is to just count the frequency of each character and check whether at most one character
-    has odd frequency or not.
-
-    We can do that easily with a hash table.
-
-
      */
-    static boolean isPalindromePermutation(String str){
-        Map<Character, Integer> mp = new HashMap<>();
-        for(int i=0;i<str.length();i++){
-            if((str.charAt(i)>='A' && str.charAt(i)<'Z')||(str.charAt(i)>='a' && str.charAt(i)<'z')){
-                int v = 0;
-                if(mp.getOrDefault(str.charAt(i),0)>0){
-                    v = mp.getOrDefault(str.charAt(i),0)-1;
-                }else{
-                    v = mp.getOrDefault(str.charAt(i),0)+1;
-                }
-                mp.put(str.charAt(i),v);
+    static boolean oneReplaceAway(String str1, String str2){
+        int diff = 0;
+        for(int i=0;i<str1.length();i++){
+            if(str1.charAt(i)!=str2.charAt(i)){
+                diff++;
             }
         }
-        int count = 0;
-        for(Character key: mp.keySet()){
-            count += mp.get(key);
-        }
-        return count<=1;
+        return diff==1;
     }
 
-    static boolean isPermutationOfPalindrome(String phrase){
-        int[] table = buildCharFrequencyTable(phrase);
-        return checkMaxOneOdd(table);
-    }
-    static boolean checkMaxOneOdd(int[] table){
-        boolean foundOdd = false;
-        for(int count:table){
-            if(count%2==1){
-                if(foundOdd){
-                    return false;
-                }
-                foundOdd = true;
+    static boolean oneInsertDeleteAway(String small, String big){
+        int i = 0;
+        int j = 0;
+        while(i<small.length()){
+            if(small.charAt(i)==big.charAt(j)){
+                i++;
             }
+            j++;
+        }
+        return (big.length()-j)==1 || j-i==1;
+    }
+//    static boolean oneEditAway(String str1, String str2){
+//        if(str1.length()==str2.length()){
+//            return oneReplaceAway(str1, str2);
+//        }else if(str1.length()+1==str2.length()){
+//            return oneInsertDeleteAway(str1, str2);
+//        }else if(str2.length()+1==str1.length()){
+//            return oneInsertDeleteAway(str2, str1);
+//        }
+//        return false;
+//    }
+
+
+    static boolean oneEditAway(String str1, String str2){
+        if(Math.abs(str1.length()-str2.length())>1){
+            return false;
+        }
+        String smaller = str1.length()<str2.length()?str1:str2; //smaller string
+        String bigger = str1.length()<str2.length()?str2:str1; //bigger string
+        int smaller_index = 0;
+        int bigger_index = 0;
+        boolean foundDiff = false;
+        while(bigger_index<bigger.length() && smaller_index<smaller.length()){
+            if(smaller.charAt(smaller_index)!=bigger.charAt(bigger_index)){
+                if(foundDiff) return false;
+                foundDiff = true;
+                if(smaller.length()==bigger.length()){
+                    smaller_index++;
+                }
+            }else{
+                smaller_index++;
+            }
+            bigger_index++;
         }
         return true;
     }
-    static int getCharNumber(Character c){
-//        int a = Character.getNumericValue('A');
-//        int z = Character.getNumericValue('Z');
-//        or
-        int a = Character.getNumericValue('a');
-        int z = Character.getNumericValue('z');
-        int val = Character.getNumericValue(c);
-        if(a<=val && val<=z){
-            return val - a;
-        }
-        return -1;
-    }
-    static int[] buildCharFrequencyTable(String phrase){
-        int[] table = new int[Character.getNumericValue('z')-Character.getNumericValue('a')+1];
-        for(char c: phrase.toCharArray()){
-            int x = getCharNumber(c);
-            if(x!=-1){
-                table[x]++;
-            }
-        }
-        return table;
-    }
+
     public static void main(String[] args){
-        System.out.println(isPermutationOfPalindrome("Tact coa"));
+        System.out.println(oneEditAway("ale","bale"));
+        System.out.println(oneEditAway("pale","ple"));
+        System.out.println(oneEditAway("pales","pale"));
+        System.out.println(oneEditAway("pale","bale"));
+        System.out.println(oneEditAway("pale","pale"));
+        System.out.println(oneEditAway("pale","bake"));
     }
 }

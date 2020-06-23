@@ -7,7 +7,26 @@ import java.util.List;
 
 public class Main {
 
+    static void swapArrays(){
+        int[][] matrix = new int[][]{
+                {1,2,3},
+                {4,5,6},
+                {7,8,9}
+        };
 
+        int[] a1 = {1,2,3};
+        int[] a2 = {4,5,6};
+        System.out.println(Arrays.toString(a1));
+        System.out.println(Arrays.toString(a2));
+        for(int i=0;i<a1.length;i++){
+            int tmp = a2[i];
+            a2[i] = a1[i];
+            a1[i] = tmp;
+        }
+        System.out.println(Arrays.toString(a1));
+        System.out.println(Arrays.toString(a2));
+
+    }
 
     public static List<Integer> kSubArraySum(int A[], int k){
         int[] window = new int[k];
@@ -34,6 +53,7 @@ public class Main {
     static double phi = 0.5*(Math.sqrt(5)+1);
 
     public static void main(String[] args) {
+        swapArrays();
 //        int[] arr = Utils.getRandomIntArray(20);
 //        System.out.println(Arrays.toString(arr));
 //        kSubArraySum(arr,4);
