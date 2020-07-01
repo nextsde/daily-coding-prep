@@ -53,19 +53,7 @@ public class Main {
 
     static double phi = 0.5*(Math.sqrt(5)+1);
 
-    private static void decisionTaker(String input, String output, int start, int end){
-        if(start==end){
-            System.out.println(output);
-        }else{
-            //we need take decision as to whether to choose the character from the input or not
-            decisionTaker(input, output, start+1,end);
-            decisionTaker(input, output+input.substring(start,start+1), start+1,end);
-        }
-    }
-
-
     public static void main(String[] args) {
-        decisionTaker("abc", "",0,3);
 //        swapArrays();
 //        int[] arr = Utils.getRandomIntArray(20);
 //        System.out.println(Arrays.toString(arr));

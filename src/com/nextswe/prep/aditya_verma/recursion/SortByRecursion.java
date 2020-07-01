@@ -2,8 +2,6 @@ package com.nextswe.prep.aditya_verma.recursion;
 
 import com.nextswe.prep.utils.Utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -158,7 +156,7 @@ public class SortByRecursion {
         while(!list.isEmpty()){
             System.out.println(list.pop());
         }
-//        sort_r(list);
-//        Utils.printList(list);
+        sort_r(list);
+        Utils.printList(list);
     }
 }
