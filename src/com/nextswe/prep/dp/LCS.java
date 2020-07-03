@@ -73,17 +73,18 @@ public class LCS {
 //        char A[] = "AGGTAB".toCharArray();
 //        char B[] = "GXTXAYB".toCharArray();
 
-        char A[] = "AGGTAB".toCharArray();
-        char B[] = "GXTXAYB".toCharArray();
-
-        System.out.println(LCSRecursive(A,B,0,0));
-
-        int[][] memo = new int[A.length+1][B.length+1];
-        for(int i=0;i<memo.length;i++){
-            Arrays.fill(memo[i],-1);
-        }
-        System.out.println(LCSRecursiveMemo(A,B,0,0,memo));
-
-        System.out.println(reconstructLCS(A,B, LCSDP(A,B)));
+//        char A[] = "AGGTAB".toCharArray();
+//        char B[] = "GXTXAYB".toCharArray();
+//
+//        System.out.println(LCSRecursive(A,B,0,0));
+//
+//        int[][] memo = new int[A.length+1][B.length+1];
+//        for(int i=0;i<memo.length;i++){
+//            Arrays.fill(memo[i],-1);
+//        }
+//        System.out.println(LCSRecursiveMemo(A,B,0,0,memo));
+//
+//        System.out.println(reconstructLCS(A,B, LCSDP(A,B)));
     }
+
 }
