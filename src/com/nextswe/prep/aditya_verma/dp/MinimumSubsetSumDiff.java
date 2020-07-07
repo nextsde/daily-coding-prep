@@ -1,18 +1,21 @@
 package com.nextswe.prep.aditya_verma.dp;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MinimumSubsetSumDiff {
     public static int minSubsetSumDiff(int[] arr){
         int sum=0;
+
         for(int a:arr){
             sum+=a;
         }
+
         boolean[][] memo = new boolean[arr.length+1][sum+1];
-        for(int j=0;j<memo[0].length;j++){
-            memo[0][j] = false;
-        }
+
+        Arrays.fill(memo[0], false);
+
         for(int i=0;i<memo.length;i++){
             memo[i][0] = true;
         }
@@ -33,6 +36,7 @@ public class MinimumSubsetSumDiff {
                 list.add(j);
             }
         }
+
         int min = Integer.MAX_VALUE;
         for(int a: list){
             min = Math.min(min, sum-2*a);

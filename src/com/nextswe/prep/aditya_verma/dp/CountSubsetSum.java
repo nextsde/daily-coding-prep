@@ -1,11 +1,11 @@
 package com.nextswe.prep.aditya_verma.dp;
 
+import java.util.Arrays;
+
 public class CountSubsetSum {
     public static int countSubSetSum(int[] arr, int sum){
         int[][] memo = new int[arr.length+1][sum+1];
-        for(int j=0;j<memo[0].length;j++){
-            memo[0][j] = 0;
-        }
+        Arrays.fill(memo[0], 0);
         for(int i=0;i<memo.length;i++){
             memo[i][0] = 1;
         }
